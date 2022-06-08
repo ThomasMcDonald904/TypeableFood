@@ -1,11 +1,12 @@
-from core import printList
-inventory = []
-devInventory = []
+from utils import print_list
 
-def inventoryCheck(inventoryType, dev):
+inventory = []
+devInventory = ["Apple", "Cheese", "Chocolate"]
+
+
+def inventory_check(inventoryType, dev):
     if inventoryType == "fridge":
         if dev:
-            printList(devInventory)
+            print_list(devInventory)
         else:
-            printList(inventory)
-    
+            print_list(inventory)

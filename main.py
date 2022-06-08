@@ -1,8 +1,14 @@
+from inventorycheck import inventory_check
 
-print("Welcome to __")
+
 def gameLoop():
     playerInput = input("Input: ")
     if playerInput.lower == "fridge" or "f":
-        InventoryCheck("fridge", False)
-        
-        
+        inventory_check("fridge", False)
+    else:
+        print("Incorrect Input")
+
+
+print("Welcome to TypeableFood")
+while True:
+    gameLoop()
