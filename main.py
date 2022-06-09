@@ -1,7 +1,6 @@
 from inventorychecks import inventory_check, inventory_item_check
-from utils import print_list
+from utils import print_list, os_clear
 
-import os
 
 isDev = True
 
@@ -25,7 +24,7 @@ def get_player_input(input_info_message: str = ""):
     if not input_info_message == "":
         print(input_info_message)
     player_input = input("Input: ")
-    os.system("cls")
+    os_clear()
     return player_input.lower()
 
 
@@ -69,7 +68,9 @@ def game_loop():
         player_help(player_input)
         game_loop()
     else:
-        print("Incorrect input")
+      os_clear()
+      print("Incorrect input")
+
 
 
 print("Welcome to TypeableFood")
