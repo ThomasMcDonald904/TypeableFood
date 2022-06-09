@@ -1,23 +1,25 @@
 from utils import print_list, InventoryTypeError
+import ingredients
 
 fridge = []
-devFridge = ["Apple", "Cheese", "Chocolate"]
+devFridge = [Apple(), "cheese", "chocolate"]
+# TODO start work importing ingredients and creating classes
 
 pantry = []
-devPantry = ["Rice", "Flour", "Sugar"]
+devPantry = ["rice", "flour", "sugar"]
 
 def inventory_item_check(inventory, item, dev):
     if dev:
-        if inventory == "fridge" and item in devFridge:
+        if inventory == "fridge" and item.lower() in devFridge:
             return True
-        elif inventory == "pantry" and item in devPantry:
+        elif inventory == "pantry" and item.lower() in devPantry:
             return True
         else:
             return False
     else:
-        if inventory == "fridge" and item in fridge:
+        if inventory == "fridge" and item.lower() in fridge:
             return True
-        elif inventory == "pantry" and item in pantry:
+        elif inventory == "pantry" and item.lower() in pantry:
             return True
         else:
             return False

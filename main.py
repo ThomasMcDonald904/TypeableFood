@@ -4,20 +4,8 @@ from utils import print_list, os_clear
 
 isDev = True
 
-available_inventories = ["Fridge", "Pantry"]
+available_inventories = ["fridge", "pantry"]
 
-
-def handle_inventory_input():
-    player_input = get_player_input("What inventory to check")
-    if player_input == "fridge" or player_input == "f":
-        inventory_check("fridge", isDev)
-    elif player_input == "pantry" or player_input == "p":
-        inventory_check("pantry", isDev)
-    elif player_input == "help":
-        print("You can type \"i\" then these to obtain your current available inventories")
-        print_list(available_inventories)
-    else:
-        print("Inventory not available")
 
 
 def get_player_input(input_info_message: str = ""):
@@ -37,13 +25,29 @@ def player_help(player_input):
         print("More help can be obtained by typing \"help\" in the inventory prompt or by typing \"help inventory\" outside of the inventory prompt")
 
 
+def handle_inventory_input():
+    player_input = get_player_input("What inventory to check")
+    if player_input == "fridge" or player_input == "f":
+        inventory_check("fridge", isDev)
+    elif player_input == "pantry" or player_input == "p":
+        inventory_check("pantry", isDev)
+    elif player_input == "help":
+        print("You can type \"i\" then these to obtain your current available inventories")
+        print_list(available_inventories)
+    else:
+        print("Inventory not available")
+
+def handle_cook_input():
+  pass
+
 def handle_prepare_input():
     player_input = get_player_input("From which inventory will you get your ingredients from")
     if player_input == "fridge" or player_input == "f" and "fridge" in available_inventories:
         player_input = get_player_input("Which ingredient do you want from the fridge")
         if inventory_item_check("fridge", player_input, isDev):
             player_input = get_player_input("How do you want your ingredient prepared")
-            # TODO add different preparation methods for both fridge and pantry
+            if player_input == "pantry":
+              
     elif player_input == "pantry" or player_input == "p" and "pantry" in available_inventories:
         player_input = get_player_input("Which ingredient do you want from the pantry")
         if inventory_item_check("pantry", player_input, isDev):
@@ -63,7 +67,11 @@ def game_loop():
     if player_input == "prepare" or player_input == "prep" or player_input == "p":
         handle_prepare_input()
         game_loop()
-    # TODO add cooking
+
+    if player_input == "cook" or player_input == "c":
+      handle_cook_input()
+      game_loop()
+
     if "help" in player_input:
         player_help(player_input)
         game_loop()
